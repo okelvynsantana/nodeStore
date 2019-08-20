@@ -20,6 +20,9 @@ app.unsubscribe(bodyParser.urlencoded({
     extended: false 
 }));
 
+//CARREGA OS MODELS
+const Product = require('./models/productModel');
+
 //ROUTES
 app.use('/', indexRoute);
 app.use('/products', productRoute);
