@@ -1,26 +1,28 @@
 'use strict'
 
-//IMPORTS
+//Imports
 const app = require('../src/app');
 const debug = require('debug')('nodestr: server');
 const http = require('http');
-// FINAL IMPORTS
+// Imports
 
-
+//Change Application Port
 const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);// CHANGE APPLICATION PORT
+app.set('port', port);
+// Change Application Port
 
-
+//Server
 const server = http.createServer(app);
 server.listen(port, () => {
     console.log(`Servidor rodando na url http://localhost:${port}`)
-});//SERVER
+});
+//Server
 
 server.on('error', onError);
 server.on('Listening', onListening);
 
 
-
+// NORMALIZE THE APPLICATION PORT
 function normalizePort(val) {
     const port = parseInt(val, 10);
 
@@ -34,7 +36,7 @@ function normalizePort(val) {
     return false;
 };// NORMALIZE THE APPLICATION PORT
 
-
+// ERRORS TRATATIVES
 function onError(error) {
     if(error.syscall !== 'listen') {
         throw error;
@@ -55,8 +57,9 @@ function onError(error) {
         default:
             throw error;
     }
-}; // ERROS TRATATIVES
+}; // ERRORS TRATATIVES
 
+// DEBUG APPLICATION
 function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string'

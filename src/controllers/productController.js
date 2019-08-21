@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const Product = require('../models/productModel');
 
+//List all Products
 exports.get = (req, res, next) => {
     Product
         .find({ 
@@ -12,8 +13,51 @@ exports.get = (req, res, next) => {
         }).catch(e => {
             res.status(400).send(e);
         });
-}; //LIST ALL PRODUCTS
+}; 
+//List all Products
 
+//List Products by Slug
+exports.getBySlug = (req, res, next) => {
+    Product
+        .findOne({
+            slug: req.params.slug, 
+            active: true 
+        }, 'title description price slug tags ')
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+}; //List Products by Slug
+
+//List Products by Id
+exports.getById = (req, res, next) => {
+    Product
+        .findById(req.params.id)
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+}; 
+//List Products by Id
+
+//List Products by Tag
+exports.getByTag = (req, res, next) => {
+    Product
+        .find({
+            tags: req.params.tags,
+            active: true
+        }, 'title decription price slug tags')
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+};
+//List Products by Tag
+
+// Creat Products
 exports.post = (req, res, next) => {
     var product = new Product();
     product.title = req.body.title;
@@ -33,16 +77,22 @@ exports.post = (req, res, next) => {
                 data: e 
             });
         });
-};//CREATE PRODUCT
+};
+//Create Products
 
+//Update Products
 exports.put = (req, res, next) => {
     const id = req.params.id;
     res.status(200).send({
         id: id,
         item: req.body
     });
-};// UPDATE
+};
+// Update Products
 
+
+//Delete Products
 exports.delete = (req, res, next) => {
     res.status(200).send(req.body);
-};// DELETE
+};
+// Delete Products
