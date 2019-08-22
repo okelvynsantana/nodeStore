@@ -12,7 +12,7 @@ router.get('/admin/:id', controller.getById); //List products by Id.
 router.get('/tags/:tags', controller.getByTag); //List Products by Tag.
 router.post('/', controller.post); //Create Product.
 router.put('/:id', controller.put); // Update Product.
-router.delete('/', controller.delete);//Delete Product.
+router.delete('/:id', controller.delete);//Delete Product.
 //CRUD Products
 
 module.exports = router;
