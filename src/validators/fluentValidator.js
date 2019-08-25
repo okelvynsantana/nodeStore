@@ -1,5 +1,6 @@
 'use strict';
 
+
 let errors = [];
 
 function ValidationContract() {
@@ -43,5 +44,6 @@ ValidationContract.prototype.clear = () => {
 ValidationContract.prototype.isValid = () => {
     return errors.length == 0;
 }
+
 
 module.exports = ValidationContract;

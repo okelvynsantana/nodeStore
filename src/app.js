@@ -1,19 +1,24 @@
 'use strict'
 //Imports
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const router = express.Router();
 const mongoose = require('mongoose');
+const config = require('./config');
+
+const app = express();
+const router = express.Router();
+
 //Imports
 
 //Load Application Routes
 const indexRoute = require('./routes/indexRoutes');
 const productRoute = require('./routes/productRoutes');
+const customerRoute = require('./routes/CustomerRoutes');
+const orderRoute = require('./routes/OrderRoutes');
 //Load Application Routes
 
 //Data Base Connect
-mongoose.connect('mongodb+srv://doublepeppers:kss046dp@doublepeppers-tswtt.azure.mongodb.net/nodestr?retryWrites=true&w=majority');
+mongoose.connect(config.connectionString);
 //Data Base Connect
 
 //Body Parser
@@ -32,6 +37,8 @@ const Order = require('./models/OrderModel');
 //Application Routes
 app.use('/', indexRoute);
 app.use('/products', productRoute);
+app.use('/customers', customerRoute);
+app.use('/orders', orderRoute);
 //Application Routes
 
 module.exports = app;
