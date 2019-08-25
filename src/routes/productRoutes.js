@@ -9,7 +9,7 @@ const controller = require('../controllers/productController');
 router.get('/', controller.get); //List all products.
 router.get('/:slug', controller.getBySlug); //List products by slug.
 router.get('/admin/:id', controller.getById); //List products by Id.
-router.get('/tags/:tags', controller.getByTag); //List Products by Tag.
+router.get('/tags/:tag', controller.getByTag); //List Products by Tag.
 router.post('/', controller.post); //Create Product.
 router.put('/:id', controller.put); // Update Product.
 router.delete('/:id', controller.delete);//Delete Product.

@@ -25,6 +25,8 @@ app.unsubscribe(bodyParser.urlencoded({
 
 //Load Application Models
 const Product = require('./models/productModel');
+const Customer = require('./models/CustomerModel')
+const Order = require('./models/OrderModel');
 //Load Application Models
 
 //Application Routes
